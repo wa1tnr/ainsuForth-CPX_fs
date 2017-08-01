@@ -1,7 +1,5 @@
-// Sun Jul 30 02:55:32 UTC 2017
-// 4735-b0b-09-
-
-                     // Sun Jul 30 06:42:41 UTC 2017
+// Tue Aug  1 23:21:00 UTC 2017
+// 4735-b0c-01-
 
 // poor practice -- hard coded the answer:
 #ifdef HAS_DOTSTAR_LIB
@@ -9,7 +7,6 @@
 // #define HAS_DOTSTAR_LIB
 #undef HAS_DOTSTAR_LIB
 #endif
-
 
 // FAT fileystem:
 // #include "src/periph/fatfs.h"
@@ -20,8 +17,6 @@
 #ifdef HAS_DOTSTAR_LIB
 #include "src/periph/dotstar.h"
 #endif
-
-// WHELBUP
 
 #include <Arduino.h>
 #include "yaffa.h"
@@ -105,6 +100,10 @@ userEntry_t* pNewUserEntry = NULL;
 uint8_t flags;                 // Internal Flags
 uint8_t wordFlags;             // Word flags
 uint8_t spiFlashReading;       // Adafruit SPI flash: reading
+uint8_t spiFlashWaiting = FALSE ;       // there is more to read from an open forth source file
+uint8_t fileClosed = TRUE ;
+
+// File thisFile; // spi flash file handle
 
 /******************************************************************************/
 /** Error Handling                                                           **/
@@ -272,6 +271,9 @@ void loop(void) {
   cpSourceEnd = cpSource + getLine(cpSource, BUFFER_SIZE);
   if (cpSourceEnd > cpSource) {
       interpreter();
+
+      // if (spiFlashWaiting) { Serial.println("debug: LOOP - flash is WAITING."); }
+
     if (errorCode) {
         errorCode = 0;
     } else {
@@ -295,11 +297,12 @@ void loop(void) {
 
   if (state) {
       compilePrompt();
-      Serial.println("\r\n SPECIAL Line 297: \r\n");
+      // Serial.println("\r\n SPECIAL Line 297: \r\n");
   } else {
 
       if (spiFlashReading) {
-        int fake = 0; // spiFlashReading = FALSE ;
+          int fake = 0;
+          // Serial.println("debug: we are still reading near compilePrompt.");
       }
 
       Serial.print(prompt_str);
