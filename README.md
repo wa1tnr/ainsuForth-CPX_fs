@@ -1,4 +1,11 @@
-# ainsuForth-CPX_fs
+# ainsuForth-CPX_fs-exp
+
+August 2nd:
+
+More experimental -- looking at adding SPI flash write support,
+file capture from ASCII upload (the 'download' word) and perhaps
+splitting out file i/o to its own proper source files.
+
 
 EXPERIMENTAL -- the below, plus a limited use of the SPI flash
 to author forth source code on the device.  Currently, this
@@ -6,19 +13,22 @@ amounts to reading a full program (a multi-line forth source
 program) from /forth/job.fs on the SPI flash volume.
 
 
-Platform: Circuit Playground Express (an M0 board w/SPI 2MB flashROM) - 29 July 2017
+Platform: Circuit Playground Express (an M0 board w/SPI 2MB flashROM) - 02 Aug 2017
 
 A Forth for SAMD21G18A based on YAFFA-ARM Forth - 2012 by Stuart Wood.
 
 
 
 See compatibility.h for (some) configuration options across
-target board devices.
+target board devices (subset of boards.txt found under
 
-------------------------------------------------------------
-Current platform is the Adafruit CPX (Circuit Playground Express) - PRODUCT ID: 3333
+  .arduino15/packages/adafruit/hardware/samd/1.0.18/boards.txt
+
+----------------------------------------------------------------
+Current platform is the
+    Adafruit CPX (Circuit Playground Express) - PRODUCT ID: 3333
 which is ATSAMD21 Cortex M0+ based.
-------------------------------------------------------------
+----------------------------------------------------------------
 
 Platform will change frequently -- five different targets are
 tested on a (somewhat) rotating basis:
@@ -29,9 +39,9 @@ tested on a (somewhat) rotating basis:
   * Adafruit Circuit Playground Express (which is also an M0 board)
   * Adafruit Gemma M0
 
-Tue Aug  1 23:21:00 UTC 2017
+Wed Aug  2 18:04:12 UTC 2017
 
-ed91c
+cf24e
 
 old:
 
