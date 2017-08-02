@@ -1,5 +1,5 @@
-// Tue Jun 20 21:33:06 UTC 2017
-// 4735-a0p-02-
+// Wed Aug  2 01:22:51 UTC 2017
+// 4735-b0c-03-
 
 #include <Arduino.h>
 #include "../../yaffa.h"
@@ -68,9 +68,9 @@ void signOn(void) {
     Serial.print(w);
 
 
-    Serial.print("  \r\n         YAFFA - Yet Another Forth For Arduino, \n");
+    Serial.print("  \r\n         YAFFA - Yet Another Forth For Arduino, \r\n");
 
-    Serial.print("         Copyright (C) 2012 Stuart Wood\n");
+    Serial.print("         Copyright (C) 2012 Stuart Wood\r\n");
 
 //  Serial.print(" This program comes with ABSOLUTELY NO WARRANTY.\r\n");
 //  Serial.print(" This is free software, and you are welcome to\r\n");
